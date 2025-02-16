@@ -1,0 +1,246 @@
+[
+    {
+        "name": "run_datagen_script",
+        "description": "Installs uv (if required) and runs datagen.py script with user email",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "user_email": {
+                    "type": "string",
+                    "description": "User email address to pass as argument"
+                },
+                "script_url": {
+                    "type": "string",
+                    "description": "URL of datagen.py script",
+                    "default": "https://raw.githubusercontent.com/sanand0/tools-in-data-science-public/tds-2025-01/project-1/datagen.py"
+                }
+            },
+            "required": [
+                "user_email"
+            ]
+        }
+    },
+    {
+        "name": "format_markdown",
+        "description": "Formats Markdown file using Prettier",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "Path to Markdown file",
+                    "default": "/data/format.md"
+                },
+                "prettier_version": {
+                    "type": "string",
+                    "description": "Prettier version",
+                    "default": "3.4.2"
+                }
+            },
+            "required": [
+                "file_path"
+            ]
+        }
+    },
+    {
+        "name": "count_weekdays",
+        "description": "Counts specific weekdays in dates file",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "input_file": {
+                    "type": "string",
+                    "description": "Path to dates file",
+                    "default": "/data/dates.txt"
+                },
+                "output_file": {
+                    "type": "string",
+                    "description": "Output file path",
+                    "default": "/data/dates-wednesdays.txt"
+                },
+                "weekday": {
+                    "type": "string",
+                    "enum": [
+                        "Wednesday"
+                    ],
+                    "default": "Wednesday"
+                }
+            },
+            "required": [
+                "input_file",
+                "output_file"
+            ]
+        }
+    },
+    {
+        "name": "sort_contacts",
+        "description": "Sorts contacts by last and first name",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "input_file": {
+                    "type": "string",
+                    "description": "Input JSON contacts file",
+                    "default": "/data/contacts.json"
+                },
+                "output_file": {
+                    "type": "string",
+                    "description": "Sorted output file",
+                    "default": "/data/contacts-sorted.json"
+                }
+            },
+            "required": [
+                "input_file",
+                "output_file"
+            ]
+        }
+    },
+    {
+        "name": "process_logs",
+        "description": "Processes recent log files",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "log_dir": {
+                    "type": "string",
+                    "description": "Log directory path",
+                    "default": "/data/logs/"
+                },
+                "output_file": {
+                    "type": "string",
+                    "description": "Output file",
+                    "default": "/data/logs-recent.txt"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "Number of recent files",
+                    "default": 10
+                }
+            },
+            "required": [
+                "log_dir",
+                "output_file"
+            ]
+        }
+    },
+    {
+        "name": "create_markdown_index",
+        "description": "Creates index of Markdown files",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "docs_dir": {
+                    "type": "string",
+                    "description": "Document directory",
+                    "default": "/data/docs/"
+                },
+                "output_file": {
+                    "type": "string",
+                    "description": "Index file path",
+                    "default": "/data/docs/index.json"
+                }
+            },
+            "required": [
+                "docs_dir",
+                "output_file"
+            ]
+        }
+    },
+    {
+        "name": "extract_email_address",
+        "description": "Extracts sender email from text",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "input_file": {
+                    "type": "string",
+                    "description": "Email content file",
+                    "default": "/data/email.txt"
+                },
+                "output_file": {
+                    "type": "string",
+                    "description": "Output file",
+                    "default": "/data/email-sender.txt"
+                }
+            },
+            "required": [
+                "input_file",
+                "output_file"
+            ]
+        }
+    },
+    {
+        "name": "extract_credit_card",
+        "description": "Extracts credit card from image",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "image_path": {
+                    "type": "string",
+                    "description": "Credit card image",
+                    "default": "/data/credit-card.png"
+                },
+                "output_file": {
+                    "type": "string",
+                    "description": "Output text file",
+                    "default": "/data/credit-card.txt"
+                }
+            },
+            "required": [
+                "image_path",
+                "output_file"
+            ]
+        }
+    },
+    {
+        "name": "find_similar_comments",
+        "description": "Finds most similar comments using embeddings",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "input_file": {
+                    "type": "string",
+                    "description": "Comments file",
+                    "default": "/data/comments.txt"
+                },
+                "output_file": {
+                    "type": "string",
+                    "description": "Output file",
+                    "default": "/data/comments-similar.txt"
+                }
+            },
+            "required": [
+                "input_file",
+                "output_file"
+            ]
+        }
+    },
+    {
+        "name": "calculate_ticket_sales",
+        "description": "Calculates total sales for ticket type",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "database_file": {
+                    "type": "string",
+                    "description": "SQLite database file",
+                    "default": "/data/ticket-sales.db"
+                },
+                "ticket_type": {
+                    "type": "string",
+                    "description": "Ticket type to calculate",
+                    "default": "Gold"
+                },
+                "output_file": {
+                    "type": "string",
+                    "description": "Output file",
+                    "default": "/data/ticket-sales-gold.txt"
+                }
+            },
+            "required": [
+                "database_file",
+                "ticket_type"
+            ]
+        }
+    }
+]

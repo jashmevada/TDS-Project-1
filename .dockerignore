@@ -1,0 +1,17 @@
+.env
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+build/
+dist/
+wheels/
+.env
+.venv
+data
+logs
+models
+*.log 
+*.zip
+*.python-version
