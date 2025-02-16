@@ -15,7 +15,7 @@ import pandas as pd
 # from torch import cosine_similarity, embedding
 import logging
 
-from .llm_client import AI_KEY, AI_URL, embed, get_embeddings, llm_extract_sender, parse_task_with_llm
+from .llm_client import AI_KEY, AI_URL, get_embeddings, llm_extract_sender, parse_task_with_llm
 
 
 def process_task(task_description):
@@ -32,7 +32,6 @@ def format_markdown(file_path, prettier_version):
         shell=True,
     )
 
-    print(t.stderr)
     return "Markdown formatted successfully"
 
 
@@ -181,24 +180,7 @@ def extract_credit_card(image_path: str, output_file: str):
 
 
 def find_similar_comments(input_file: str, output_file: str) -> str:
-    # Implementation for finding similar comments
-    # with open(input_file, "r") as file:
-    #     comments = file.readlines()
-    
-    # embeddings = [embed(comment) for comment in comments]
-    # max_similarity = -1
-    # most_similar_pair = None
-
-    # for i in range(len(comments)):
-    #     for j in range(i + 1, len(comments)):
-    #         similarity = cosine_similarity(embeddings[i], embeddings[j])
-    #         if similarity > max_similarity:
-    #             max_similarity = similarity
-    #             most_similar_pair = (comments[i].strip(), comments[j].strip())
-
-    # with open(output_file, "w") as file:
-    #     file.write("\n".join(most_similar_pair))
-
+ 
     with open(input_file, "r") as file:
         documents = file.readlines()
     
@@ -360,17 +342,17 @@ def run_datagen_script(user_email: str, script_url: str = "https://raw.githubuse
     #     ],
     #     env={"user_email": user_email},
     # )
-    print (user_email, script_url)
+    # print (user_email, script_url)
     try:
         # t = subprocess.run (f"python3 -f ")
-        # subprocess.run(["curl", "-O", script_url])
+        subprocess.run(["curl", "-O", script_url])
         t = subprocess.run (f"uv run /app/datagen.py {user_email}", capture_output=True, shell=True, check=False)
-        print(t.stdout)
+        # print(t.stdout)
         # t = subprocess.run([f"uv run {script_url} {user_email}"], check=False,shell=True,)
         if t.returncode == 0:
             return "Datagen script executed successfully"
     except Exception as e:
-        print (e)
+        # print (e)
         return "Failed to Gen Data."
 
 
